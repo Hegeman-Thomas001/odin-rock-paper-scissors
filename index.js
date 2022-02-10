@@ -2,41 +2,36 @@
 
 const arrayComputerChoices = ['rock', 'paper', 'scissors'];
 const playerSelection = 'ROck';
-// const computerSelection = computerPlay();
 
 function computerPlay() {
-  // for (let i = 1; i <= 20; i++) {
   const randomChoice = Math.floor(Math.random() * 3);
-  // console.log(randomNumber);
-  // }
-  return arrayComputerChoices[randomChoice];
-}
 
-// console.log(computerPlay());
+  return arrayComputerChoices[randomChoice];
+
+}
 
 function roundWinner(plSelec, computerSelection) {
   const roundInputs = `${plSelec}${computerSelection}`;
 
   if (
-    roundInputs === 'rockscissors'
-    || roundInputs === 'paperrock'
-    || roundInputs === 'scissorspaper'
+    roundInputs === 'rockscissors' || roundInputs === 'paperrock' ||
+    roundInputs === 'scissorspaper'
   ) {
 
     return `Player won! ${plSelec} beats ${computerSelection}!`;
 
   } else if (
-    roundInputs === 'rockpaper'
-    || roundInputs === 'scissorsrock'
-    || roundInputs === 'paperscissors'
+    roundInputs === 'rockpaper' ||
+    roundInputs === 'scissorsrock' ||
+    roundInputs === 'paperscissors'
   ) {
 
     return `Computer won! ${computerSelection} beats ${plSelec}!`;;
 
   } else if (
-    roundInputs === 'rockrock'
-    || roundInputs === 'paperpaper'
-    || roundInputs === 'scissorsscissors'
+    roundInputs === 'rockrock' ||
+    roundInputs === 'paperpaper' ||
+    roundInputs === 'scissorsscissors'
   ) {
 
     return 'Tie, play on!';
@@ -45,15 +40,15 @@ function roundWinner(plSelec, computerSelection) {
 
   return null;
 
-}
+} // end roundWinner
 
 function playRound(playerSelection) {
   const plSelec = playerSelection.toLowerCase();
 
   if (
-    plSelec === 'rock'
-    || plSelec === 'paper'
-    || plSelec === 'scissors'
+    plSelec === 'rock' ||
+    plSelec === 'paper' ||
+    plSelec === 'scissors'
   ) {
     // find winner
     const computerSelection = computerPlay();
@@ -61,29 +56,22 @@ function playRound(playerSelection) {
     // Player or Computer or Tie
     const whoWon = roundWinner(plSelec, computerSelection);
 
-    // console.log(playerSelection);
-    // console.log(plSelec);
-    // console.log(computerSelection);
-
     return whoWon;
 
   }
-
+  // Player input invalid.
   return null;
 
-}
+} // emd playRound
 
-// console.log(playRound(playerSelection));
-
-// Game and the rounds to play
-function game(rounds = 1) {
-  // round winner
-  const numberOfRounds = rounds;
+// Game and the number of rounds to play
+function game(numberOfRounds = 1) {
   let playerScore = 0;
   let computerScore = 0;
   let winner = '';
 
-  for (let i = 1; i <= rounds; i++) {
+  for (let i = 1; i <= numberOfRounds; i++) {
+    // Will return null on any input other than the three accepted.
     const playerSelection = prompt('Enter rock, paper or scissors.');
     const roundWin = playRound(playerSelection);
     const tieCheck = roundWin.charAt(0);
@@ -97,7 +85,7 @@ function game(rounds = 1) {
       ++computerScore;
 
     } else {
-      // tie for round
+      // Tie, so reset round.
       --i;
 
     }
@@ -118,7 +106,7 @@ function game(rounds = 1) {
 
   console.log(winner);
 
-}
+} // end game
 
 // initiate game for five rounds
 game(5);
